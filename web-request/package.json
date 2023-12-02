@@ -1,0 +1,36 @@
+{
+  "name": "@kpander/pw-web-request",
+  "version": "1.0.0",
+  "description": "Playwright generic tests for website requests",
+  "homepage": "https://github.com/kpander/playwright-generic-tests",
+  "main": "index.js",
+  "files": [
+    "./tests/http200.spec.js",
+    "./tests/domainRedirect.spec.js",
+    "./tests/canonical.spec.js",
+    "./tests/redirect301.spec.js",
+    "CHANGELOG.md"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "playwright",
+    "tests"
+  ],
+  "author": {
+    "name": "Kendall Anderson",
+    "email": "<kpander@invisiblethreads.com>"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+github.com:kpander/playwright-generic-tests.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "dependencies": {
+    "playwright": "^1.40.1"
+  }
+}
