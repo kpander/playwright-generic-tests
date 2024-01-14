@@ -35,5 +35,14 @@ test.SHAREDCONFIG.redirect301 = {
   },
 };
 
+test.SHAREDCONFIG.a11yAxe = {
+  urls: [
+    "https://invisiblethreads.com", // passes wcag2a and wcag2aa tests
+  ],
+  tagsInclude: [ "wcag2a", "wcag2aa" ],
+  tagsExclude: [ "best-practice", "experimental" ],
+};
+
 require("@kpander/pw-web-request");
+require("@kpander/pw-web-a11y");
 
