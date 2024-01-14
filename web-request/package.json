@@ -1,6 +1,6 @@
 {
   "name": "@kpander/pw-web-request",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Playwright generic tests for website requests",
   "homepage": "https://github.com/kpander/playwright-generic-tests",
   "main": "index.js",
@@ -30,7 +30,10 @@
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
   },
-  "dependencies": {
+  "old": {
     "playwright": "^1.40.1"
+  },
+  "dependencies": {
+    "@playwright/test": "^1.40.1"
   }
 }
