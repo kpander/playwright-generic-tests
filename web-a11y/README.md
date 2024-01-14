@@ -1,6 +1,6 @@
 # Generic Web Accessibility Tests
 
-## axe
+## Deque axe
 
 Test that each URL passes the Deque Axe plugin accessibility tests.
 
@@ -14,21 +14,21 @@ test.SHAREDCONFIG.a11yAxe = {
 };
 ```
 
-## Tags
+### Tags
 
 The list of tags can be found in the [Deque Axe Documentation](https://www.deque.com/axe/core-documentation/api-documentation/#axecore-tags).
 
 Common tags include:
 
-| Tag name | Accessibility standard / purpose |
-| :- | :- |
-| wcag2a 	      | WCAG 2.0 Level A |
+| Tag name        | Accessibility standard / purpose |
+| :-              | :- |
+| wcag2a 	        | WCAG 2.0 Level A |
 | wcag2aa 	      | WCAG 2.0 Level AA |
 | wcag2aaa 	      | WCAG 2.0 Level AAA |
 | wcag21a 	      | WCAG 2.1 Level A |
 | wcag21aa 	      | WCAG 2.1 Level AA |
 | wcag22aa 	      | WCAG 2.2 Level AA |
-| best-practice    Common accessibility best practices |
+| best-practice   | Common accessibility best practices |
 | wcag2a-obsolete |	WCAG 2.0 Level A, no longer required for conformance |
 | experimental    | Cutting-edge rules, disabled by default |
 
