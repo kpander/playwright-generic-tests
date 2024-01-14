@@ -16,7 +16,7 @@
   "license": "ISC",
   "devDependencies": {
     "@kpander/pw-web-request": "file:../web-request/kpander-pw-web-request-1.1.1.tgz",
-    "@kpander/pw-web-a11y": "file:../web-a11y/kpander-pw-web-a11y-1.0.0.tgz",
+    "@kpander/pw-web-a11y": "file:../web-a11y/kpander-pw-web-a11y-1.1.0.tgz",
     "@playwright/test": "^1.40.1"
   }
 }
