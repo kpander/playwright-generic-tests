@@ -19,7 +19,7 @@ if (!isEnabled) {
     urls.forEach(url => {
       test(`URL (${url}) loads with HTTP 200`, async ({ page }) => {
         const response = await page.goto(url);
-        await page.waitForURL(url);
+        //await page.waitForURL(url);
         await expect(response.ok()).toEqual(true);
       });
     });

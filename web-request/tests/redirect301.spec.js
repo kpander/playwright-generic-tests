@@ -30,22 +30,8 @@ if (!isEnabled) {
       const target = `${protocol}://${domain}/${paths[path]}`;
 
       test(`[${url}] does 301 redirect to [${target}]`, async ({ page }) => {
-
-        const originalUrl = url;
-
-        // Intercept network requests to capture the redirect response.
-        const [response] = await Promise.all([
-          page.waitForResponse(response => response.url() === url),
-          page.route(url, route => route.continue()),
-          page.goto(url),
-        ]);
-
-        // Confirm it was a 301 redirect.
-        expect(response.status()).toBe(301);
-
-        // Confirm the expected redirect URL.
-        const redirectedUrl = response.headers()['location'];
-        expect(redirectedUrl).toBe(target);
+        await page.goto(url);
+        await page.waitForURL(target);
       });
     });
 

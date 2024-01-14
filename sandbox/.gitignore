@@ -1,0 +1,2 @@
+# Don't save package-lock.json in the sandbox
+package-lock.json
