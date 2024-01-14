@@ -17,7 +17,7 @@ if (!isEnabled) {
   console.info(`[${id}] tests disabled. No configuration given.`);
 } else {
   const config = test.SHAREDCONFIG[id];
-  const urls = config.urlsLoad || [];
+  const urls = config.urls || [];
   const urlsCanonical = config.urlsCanonical || [];
   const urlsError = config.urlsError || [];
 
