@@ -1,0 +1,21 @@
+{
+  "name": "sandbox",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "init": "rm -rf node_modules package-lock.json && npm install",
+    "test": "npx playwright test",
+    "test:ui": "npx playwright test --ui"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@kpander/pw-web-request": "file:../web-request/kpander-pw-web-request-1.1.1.tgz",
+    "@playwright/test": "^1.40.1"
+  }
+}
