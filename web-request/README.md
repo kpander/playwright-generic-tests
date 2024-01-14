@@ -71,6 +71,8 @@ test.SHAREDCONFIG.redirect301 = {
 
 Let's assume we're setting up the global configuration for just the `http200` and `domainRedirect` tests.
 
+**NOTE:** if you don't provide a configuration object to a test, it won't run. For tests that don't require configuration, simply provide an empty object.
+
 The custom test spec file in your custom project would look something like this:
 
 **generic-tests.spec.js**
@@ -79,13 +81,13 @@ The custom test spec file in your custom project would look something like this:
 const { test } = require("@playwright/test");
 
 // Define the shared configuration for the generic tests.
-test.SHAREDCONFIG = {
-  http200: {
-    urls: [ "https://domain.com/url1", "https://domain.com/path/to/url2", "https://domain.com" ],
-  },
-  domainRedirect: {
-    domainNaked: "domain.com"
-  }
+if (typeof test.SHAREDCONFIG === "undefined") test.SHAREDCONFIG = {};
+
+test.SHAREDCONFIG.http200 = {
+  urls: [ "https://domain.com/url1", "https://domain.com/path/to/url2", "https://domain.com" ],
+};
+test.SHAREDCONFIG.domainRedirect = {
+  domainNaked: "domain.com"
 };
 
 // Load the generic test packages.

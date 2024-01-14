@@ -9,43 +9,50 @@
  */
 
 // @ts-check
+const id = "canonical";
 const { test, expect } = require('@playwright/test');
+const isEnabled = test.SHAREDCONFIG && test.SHAREDCONFIG[id] && test.SHAREDCONFIG[id].enabled !== false ? true : false;
 
-const urls = test.SHAREDCONFIG.canonical.urlsLoad || [];
-const urlsCanonical = test.SHAREDCONFIG.canonical.urlsCanonical || [];
-const urlsError = test.SHAREDCONFIG.canonical.urlsError || [];
+if (!isEnabled) {
+  console.info(`[${id}] tests disabled. No configuration given.`);
+} else {
+  const config = test.SHAREDCONFIG[id];
+  const urls = config.urlsLoad || [];
+  const urlsCanonical = config.urlsCanonical || [];
+  const urlsError = config.urlsError || [];
 
-test.describe("gen[canonical] Pages have canonical link", () => {
+  test.describe(`[${id}] Pages have canonical link`, () => {
 
-  urls.forEach((url, index) => {
+    urls.forEach((url, index) => {
 
-    test(`URL (${url}) has correct canonical link`, async ({ page }) => {
-      const response = await page.goto(url);
+      test(`URL (${url}) has correct canonical link`, async ({ page }) => {
+        const response = await page.goto(url);
 
-      const canonical = await page.$('link[rel="canonical"]');
-      const href = await canonical.getAttribute("href");
+        const canonical = await page.$('link[rel="canonical"]');
+        const href = await canonical.getAttribute("href");
 
-      // Expect the same URL as the sitemap.
-      const expected = urlsCanonical[index];
-      await expect(href).toEqual(expected);
+        // Expect the same URL as the sitemap.
+        const expected = urlsCanonical[index];
+        await expect(href).toEqual(expected);
+      });
+
     });
 
   });
 
-});
+  test.describe(`[${id}] Error pages do NOT have canonical link`, () => {
 
-test.describe("gen[canonical] Error pages do NOT have canonical link", () => {
+    urlsError.forEach(url => {
 
-  urlsError.forEach(url => {
+      test(`Error page [${url}] does not have a canonical link`, async ({ page }) => {
+        const response = await page.goto(url);
 
-    test(`Error page [${url}] does not have a canonical link`, async ({ page }) => {
-      const response = await page.goto(url);
+        const canonical = await page.$('link[rel="canonical"]');
+        await expect(canonical).toBeNull();
+      });
 
-      const canonical = await page.$('link[rel="canonical"]');
-      await expect(canonical).toBeNull();
     });
 
   });
 
-});
-
+}
