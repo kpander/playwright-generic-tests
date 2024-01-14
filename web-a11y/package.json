@@ -1,0 +1,34 @@
+{
+  "name": "@kpander/pw-web-a11y",
+  "version": "1.0.0",
+  "description": "Playwright generic tests for website accessibility tests",
+  "homepage": "https://github.com/kpander/playwright-generic-tests",
+  "main": "index.js",
+  "files": [
+    "./tests/a11yAxe.spec.js",
+    "CHANGELOG.md"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "playwright",
+    "tests"
+  ],
+  "author": {
+    "name": "Kendall Anderson",
+    "email": "<kpander@invisiblethreads.com>"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+github.com:kpander/playwright-generic-tests.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "dependencies": {
+    "@axe-core/playwright": "^4.8.2",
+    "@playwright/test": "^1.40.1"
+  }
+}
