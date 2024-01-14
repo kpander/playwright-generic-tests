@@ -153,3 +153,6 @@ partials/article.asset-library.*
 src/i/favicons/browserconfig.xml
 src/i/favicons/manifest.webmanifest
 
+# playwright-related
+artifacts
+test-results

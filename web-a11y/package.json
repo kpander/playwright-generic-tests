@@ -1,6 +1,6 @@
 {
   "name": "@kpander/pw-web-a11y",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Playwright generic tests for website accessibility tests",
   "homepage": "https://github.com/kpander/playwright-generic-tests",
   "main": "index.js",
@@ -29,6 +29,7 @@
   },
   "dependencies": {
     "@axe-core/playwright": "^4.8.2",
-    "@playwright/test": "^1.40.1"
+    "@playwright/test": "^1.40.1",
+    "axe-html-reporter": "^2.2.3"
   }
 }
