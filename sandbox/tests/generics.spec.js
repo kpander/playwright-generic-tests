@@ -41,6 +41,9 @@ test.SHAREDCONFIG.a11yAxe = {
   ],
   tagsInclude: [ "wcag2a", "wcag2aa" ],
   tagsExclude: [ "best-practice", "experimental" ],
+  //saveReport: true,
+  //saveJson: true,
+  //outputFolder: "/tmp/a11y-reports",
 };
 
 require("@kpander/pw-web-request");

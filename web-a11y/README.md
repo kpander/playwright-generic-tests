@@ -11,8 +11,16 @@ test.SHAREDCONFIG.a11yAxe = {
   urls: [ "https://domain.com/url1", ... ],
   tagsRequire: [ "wcag2a", "wcag2aa" ],
   tagsExclude: [ "best-practice" ],
+  saveReport: true,
+  saveJson: true,
+  outputFolder: "/tmp/reports",
 };
 ```
+
+If `saveReport === true` then an HTML report will be saved to `outputFolder` for each URL tested.
+
+If `saveJson === true` then the JSON results will be saved to `outputFolder` for each URL tested.
+
 
 ### Tags
 
@@ -57,6 +65,8 @@ test.SHAREDCONFIG.a11yAxe = {
   ],
   tagsInclude: [ "wcag2a", "wcag21a", "wcag2aa", "wcag21aa" ],
   tagsExclude: [ "best-practice", "experimental" ],
+  saveReport: false,
+  saveJson: false,
 };
 
 // Load the generic test packages.

@@ -8,7 +8,18 @@
 const id = "a11yAxe";
 const { test, expect } = require('@playwright/test');
 const AxeBuilder = require("@axe-core/playwright").default;
+const fs = require("fs");
+const path = require("path");
 const isEnabled = test.SHAREDCONFIG && test.SHAREDCONFIG[id] && test.SHAREDCONFIG[id].enabled !== false ? true : false;
+
+const cleanFilename = function(url) {
+  return url
+    .replace(/^https?:\/\//, "")
+    .replaceAll("/", "--")
+    .replaceAll("?", "--")
+    .replaceAll("#", "--")
+    ;
+};
 
 if (!isEnabled) {
   console.info(`[${id}] tests disabled. No configuration given.`);
@@ -17,6 +28,13 @@ if (!isEnabled) {
   const urls = config.urls || [];
   const tagsInclude = config.tagsInclude || [];
   const tagsExclude = config.tagsExclude || [];
+  const saveReport = config.saveReport || false;
+  const saveJson = config.saveJson || false;
+  const outputFolder = config.outputFolder || "";
+
+  if (saveReport || saveJson) {
+    fs.mkdirSync(outputFolder, { recursive: true });
+  }
 
   test.describe(`[${id}] pages pass accessibility tests`, () => {
 
@@ -43,7 +61,26 @@ if (!isEnabled) {
           console.log(url, "has", results.violations.length, "WCAG issues:", issues);
         }
 
-        expect(results.violations).toEqual([]);
+        if (saveReport) {
+          const axeReport = require("axe-html-reporter");
+          const output = axeReport.createHtmlReport({
+            results: results,
+            options: {
+              projectKey: url
+            }
+          });
+
+          const filename = path.join(outputFolder, cleanFilename(url) + ".html");
+          fs.writeFileSync(filename, output, "utf8");
+        }
+
+        if (saveJson) {
+          const output = JSON.stringify(results.violations, null, 2);
+          const filename = path.join(outputFolder, cleanFilename(url) + ".json");
+          fs.writeFileSync(filename, output, "utf8");
+        }
+
+        expect(results.violations.length).toEqual(0);
       });
     });
   });
